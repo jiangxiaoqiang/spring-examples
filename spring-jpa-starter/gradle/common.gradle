@@ -1,0 +1,14 @@
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'propdeps'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+dependencies {
+    optional "org.springframework.boot:spring-boot-configuration-processor"
+    compile("org.projectlombok:lombok:1.16.18")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+compileJava.dependsOn(processResources)

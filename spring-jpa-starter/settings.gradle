@@ -1,0 +1,1 @@
+include "start-web-functest", "start-web", "start-business", "start-data", "start-common"
