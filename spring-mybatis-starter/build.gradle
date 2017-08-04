@@ -44,11 +44,27 @@ allprojects {
 project(':start-code-autogenerator') {
 
     apply plugin: 'java'
+    apply plugin: 'war'
+
+    configurations{
+        mybatisGenerator
+    }
+
+    dependencies {
+        mybatisGenerator "org.mybatis.generator:mybatis-generator-core:${generatorVersion}"
+        mybatisGenerator "tk.mybatis:mapper:${mybatisMapperVersion}"
+        mybatisGenerator "log4j:log4j:${log4jVersion}"
+        mybatisGenerator "org.mybatis:mybatis:${mybatisVersion}"
+        mybatisGenerator "org.postgresql:postgresql:42.1.1"
+        mybatisGenerator "junit:junit:${junitVersion}"
+        mybatisGenerator "org.mybatis:mybatis-spring:${mybatisSpringVersion}"
+    }
 
     dependencies {
         compile "log4j:log4j:${log4jVersion}"
         compile "org.mybatis:mybatis:${mybatisVersion}"
-        compile group: 'org.postgresql', name: 'postgresql', version: '42.1.1'
+        //compile "mysql:mysql-connector-java:${mysqlVersion}"
+        compile "org.postgresql:postgresql:42.1.1"
         compile "junit:junit:${junitVersion}"
         compile "org.mybatis:mybatis-spring:${mybatisSpringVersion}"
     }
@@ -58,15 +74,16 @@ project(':start-code-autogenerator') {
         file("$rootDir/start-code-autogenerator/src/main/resources/jdbc.properties").withInputStream { inputStream ->
             properties.load(inputStream)
         }
-        properties;
+        properties
     }
     task mybatisGenerate << {
         def properties = getDbProperties()
         ant.properties['targetProject'] = projectDir.path
-        ant.properties['driverClass'] = properties.getProperty("jdbc.driverClassName")
-        ant.properties['connectionURL'] = properties.getProperty("jdbc.url")
-        ant.properties['userId'] = properties.getProperty("jdbc.username")
-        ant.properties['password'] = properties.getProperty("jdbc.password")
+        println(properties.getProperty("jdbc.driverClassName"))
+        ant.properties['driverClass'] = "org.postgresql.Driver"
+        ant.properties['connectionURL'] = "jdbc:postgresql://localhost:5432/dolphin"
+        ant.properties['userId'] = "postgres"
+        ant.properties['password'] = "123456"
         ant.properties['src_main_java'] = sourceSets.main.java.srcDirs[0].path
         ant.properties['src_main_resources'] = sourceSets.main.resources.srcDirs[0].path
         ant.properties['modelPackage'] = "test.mybatis.pojo"
@@ -78,7 +95,7 @@ project(':start-code-autogenerator') {
                 classpath: configurations.mybatisGenerator.asPath
         )
         ant.mbgenerator(overwrite: true,
-                configfile: 'src/main/resources/generatorConfig.xml', verbose: true) {
+                configfile: "$rootDir/start-code-autogenerator/src/main/resources/generatorConfig.xml", verbose: true) {
             propertyset {
                 propertyref(name: 'targetProject')
                 propertyref(name: 'userId')

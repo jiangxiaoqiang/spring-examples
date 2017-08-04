@@ -10,10 +10,10 @@
             <property name="javaFileEncoding" value="utf-8"/>
         </commentGenerator>
 
-        <jdbcConnection driverClass="${driverClass}"
-                        connectionURL="${connectionURL}"
-                        userId="${userId}"
-                        password="${password}">
+        <jdbcConnection driverClass="org.postgresql.Driver"
+                        connectionURL="jdbc:postgresql://localhost:5432/dolphin"
+                        userId="postgres"
+                        password="123456">
         </jdbcConnection>
 
         <javaTypeResolver >
@@ -34,7 +34,7 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <table tableName="TS_B_PJZC_T_SP_SXRMD" enableCountByExample="false"
+        <table tableName="book" enableCountByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
                enableUpdateByExample="false">
