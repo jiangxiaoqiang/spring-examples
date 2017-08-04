@@ -14,7 +14,7 @@
     values (#{name,jdbcType=VARCHAR}, #{isbn,jdbcType=VARCHAR})
   </insert>
   <select id="selectAll" resultMap="BaseResultMap">
-    select *
+    select ID, NAME, ISBN
     from book
   </select>
 </mapper>

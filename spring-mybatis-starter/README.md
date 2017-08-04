@@ -1,20 +1,65 @@
-# Spring JPA Starter
+# Spring MyBatis Starter
 
-Spring Boot 启动项目，包含以下功能：
+Spring Boot 结合MyBatis的示例启动项目，包含POJO、Mapper、XML源代码自动生成工具。
 
-- spring-web
-- spring-data-jpa
-- postgresql
-- HikariCP
-- springfox-swagger2
-- lombok
+## 运行工程依赖的组件
+
+### DB(必选)
+
+DB采用的是PostgreSQL，PostgreSQL采用宽松的BSD协议。安装数据库后，需要在数据库中创建dolphin库，创建book表。
+
+
+
+```sql
+-- Table: public.book
+
+-- DROP TABLE public.book;
+
+CREATE TABLE public.book
+(
+  id bigint NOT NULL, -- 主键
+  name character varying(1024), -- 书籍名称
+  isbn character varying(16) NOT NULL -- ISBN
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.book
+  OWNER TO postgres;
+COMMENT ON TABLE public.book
+  IS '书籍表';
+COMMENT ON COLUMN public.book.id IS '主键';
+COMMENT ON COLUMN public.book.name IS '书籍名称';
+COMMENT ON COLUMN public.book.isbn IS 'ISBN';
+```
+
+
+
+### 连接池管理（Connection Pool）
+
+连接池使用HikariCP，一个非常轻量级的高性能连接池组件。（貌似现在没起作用）
+
+
+
+### HTTP工具
+
+
+
+curl或者浏览器访问：`http://localhost:18080/api/book/all`。
+
+
+
+![image/Selection_002.png](faf)
+
+
+
+
 
 ## 工程目录结构
 
-- [start-web-functest](start-web-functest)：所有的功能、单元测试统一放到一个子项目里
-- [start-web](start-web)：控制器、Web配置、Boot启动类，Web接口层代码
-- [start-business](start-business)：业务层代码
-- [start-data](start-data)：数据访问层代码
+- [start-web](start-web)：控制器、Web配置、Boot启动类，Web接口层代码，HTTP请求入口层
+- [start-business](start-business)：业务逻辑层
+- [start-data](start-data)：数据访问层
 - [start-common](start-common)：一些公共和通用功能
 
 ## IDE
