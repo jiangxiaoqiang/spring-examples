@@ -49,7 +49,7 @@ curl或者浏览器访问：`http://localhost:18080/api/book/all`。
 
 
 
-![image/Selection_002.png](faf)
+![返回](https://github.com/hualongdata/spring-examples/tree/master/spring-mybatis-starter/image/Selection_002.png)
 
 
 
