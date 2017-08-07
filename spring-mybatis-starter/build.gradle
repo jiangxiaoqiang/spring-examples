@@ -3,22 +3,14 @@ buildscript {
         springBootVersion = '1.5.2.RELEASE'
         springfoxVersion = '2.7.0'
         jacksonVersion = '2.8.8'
-        //gradle
-        gradleVersion = '3.5'
-        //junit
-        junitVersion = '4.12'
         //log4j
         log4jVersion = '1.2.16'
         //mybatis
         mybatisMapperVersion = '3.3.2'
         //mybatis
         mybatisVersion = '3.2.6'
-        //mysql驱动
-        mysqlVersion = '5.1.18'
         //mybatis-spring
         mybatisSpringVersion = '1.3.0'
-        //generatorVersion
-        generatorVersion = '1.3.2'
     }
     repositories {
         mavenCentral()
@@ -36,6 +28,9 @@ task wrapper(type: Wrapper) {
 }
 
 allprojects {
+
+    apply plugin: 'java'
+
     repositories {
         mavenCentral()
     }
@@ -44,26 +39,15 @@ allprojects {
 
 project(':start-web') {
 
-    apply plugin: 'java'
-
     dependencies {
         compile project(':start-busniess')
         compile project(':start-data')
         compile('org.springframework:spring-web:4.3.7.RELEASE')
-        //compile('com.zaxxer:HikariCP:2.6.0')
-        // compile('org.springframework.boot:spring-boot-starter')
         compile('org.springframework.boot:spring-boot-starter-web:1.5.2.RELEASE')
-        //testCompile('org.springframework.boot:spring-boot-starter-test')
-        //compile group: 'org.apache.tomcat', name: 'tomcat-juli', version: '8.0.35'
-        //compile("org.projectlombok:lombok:1.16.10")
-        //compile("org.springframework.boot:spring-boot-devtools")
-        //testCompile group: 'junit', name: 'junit', version: '4.11'
     }
 }
 
 project(':start-data') {
-
-    apply plugin: 'java'
 
     dependencies {
         compile('com.zaxxer:HikariCP:2.6.0')
@@ -79,8 +63,6 @@ project(':start-data') {
 
 project(':start-busniess') {
 
-    apply plugin: 'java'
-
     configurations {
         compile
     }
@@ -90,10 +72,9 @@ project(':start-busniess') {
     }
 }
 
-/*
+
 project(':start-code-autogenerator') {
 
-    apply plugin: 'java'
     apply plugin: 'war'
 
     configurations {
@@ -159,4 +140,4 @@ project(':start-code-autogenerator') {
             }
         }
     }
-}*/
+}

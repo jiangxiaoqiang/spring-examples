@@ -4,3 +4,4 @@
 .idea/workspace.xml
 build/
 *.log
+app.pid

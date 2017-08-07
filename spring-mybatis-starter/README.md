@@ -41,9 +41,19 @@ COMMENT ON COLUMN public.book.isbn IS 'ISBN';
 
 
 
-### HTTP工具
+## 运行项目
 
+### 自动生成POJO\Mapper\XML
 
+切换到项目目录，运行命令：
+
+```bash
+gradle mybatisGenerate
+```
+
+即可在对应的目录下生成目标文件。
+
+### 获取数据
 
 curl或者浏览器访问：`http://localhost:18080/api/book/all`。
 
@@ -61,6 +71,7 @@ curl或者浏览器访问：`http://localhost:18080/api/book/all`。
 - [start-business](start-business)：业务逻辑层
 - [start-data](start-data)：数据访问层
 - [start-common](start-common)：一些公共和通用功能
+- [start-code-autogenerator](start-code-autogenerator)：POJO、Mapper、XML代码自动生成
 
 ## IDE
 
