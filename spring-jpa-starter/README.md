@@ -43,7 +43,7 @@ mkdir -p .gradle/wrapper/dists
 
 ```
 cd .gradle/wrapper/dists
-wget https://file.hualongdata.com/gradle-3.5.1-bin.tar.gz
+wget http://file.hualongdata.com/gradle-3.5.1-bin.tar.gz
 tar zxf gradle-3.5.1-bin.tar.gz
 ```
 
