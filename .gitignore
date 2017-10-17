@@ -30,4 +30,5 @@ dist/
 nbdist/
 .nb-gradle/
 
-*.jar
+!spring-mybatis-starter/gradle/wrapper/gradle-wrapper.jar
+

@@ -95,12 +95,12 @@ mkdir -p .gradle/wrapper/dists
 
 进行用户主目录，再创建 `.gradle/wrapper/dists` 目录。（注意：可能你需要在 CMD 中创建带`.`字符的目录）
 
-**下载 gradle-3.5.1-bin.tar.gz 包**
+**下载 gradle-3.2.1-all.tar.gz 包**
 
 ```
 cd .gradle/wrapper/dists
-wget http://file.hualongdata.com/gradle-3.5.1-bin.tar.gz
-tar zxf gradle-3.5.1-bin.tar.gz
+wget http://file.hualongdata.com/gradle-3.2.1-all.tar.gz
+tar zxf gradle-3.2.1-all.tar.gz
 ```
 
 
